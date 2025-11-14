@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pnpm add:*)",
+      "Bash(pnpm list:*)",
+      "Bash(pnpm run build:*)",
+      "Bash(pnpm run lint)",
+      "Bash(pnpm run dev)",
+      "Bash(openspec list:*)",
+      "Bash(openspec archive add-interactive-bar-chart:*)",
+      "Bash(openspec validate:*)",
+      "Bash(openspec show:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

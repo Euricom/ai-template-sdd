@@ -1,0 +1,13 @@
+task_groups:
+  - name: TypeScript Interface Definition
+    claude_code_subagent: ts
+    standards:
+      - all
+  - name: Mock Agent Data Creation
+    claude_code_subagent: mock
+    standards:
+      - all
+  - name: Data Export and Validation
+    claude_code_subagent: export
+    standards:
+      - all
