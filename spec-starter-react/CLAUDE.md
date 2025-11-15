@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to Claude Code when working with code in this repository.
 
 ## Development Commands
 
@@ -10,62 +10,29 @@ pnpm dev          # Start development server
 pnpm build        # Production build (TypeScript + Vite)
 pnpm lint         # Run ESLint
 pnpm preview      # Preview production build
-pnpm test:ci      # Run tests in CI mode (non-interactive)
 ```
 
 ## Architecture Overview
 
-This is a React 19 + TypeScript application built with Vite, using TailwindCSS v4 and Shadcn/UI components.
+This is a minimal React 19 + Vite starter template using:
+- **React 19.2.0**: UI framework with React DOM
+- **Vite (Rolldown)**: Build tool using `rolldown-vite@7.2.2` for faster builds
+- **TypeScript 5.9**: Type safety with strict configuration
+- **ESLint**: Linting with react-hooks and react-refresh plugins
 
-### API Layer Architecture
+**Entry points:**
+- `src/main.tsx` - Application entry point, renders App component with StrictMode
+- `src/App.tsx` - Root component
+- `index.html` - HTML template with root div
 
-- **Type-Safe API**: Auto-generated OpenAPI schema types in `src/api/schema.ts`
-- **Resource-Based Organization**: APIs grouped by domain (`products/`, `users/`, etc.)
-- **Custom HTTP Client**: Use `useApiInstance` hook - pass `ApiInstance` as first parameter to all API functions
-- **DTO Mapping**: Raw API responses mapped to domain entities with proper Date objects
-- **Pattern**: API functions follow naming like `getProduct(api, id)`, `createUser(api, userData)`
+**Build configuration:**
+- `vite.config.ts` - Vite configuration with React plugin
+- `tsconfig.json` - TypeScript base config
+- `tsconfig.app.json` - TypeScript config for application code
+- `tsconfig.node.json` - TypeScript config for Node/build scripts
 
-### Component Structure
-
-- **App Layout**: Nested routing with `AppLayout` component and `Outlet`
-- **UI Components**: Shadcn/UI components in `/ui`, custom components in `/components`
-- **Theme System**: Custom ThemeContext with dark/light/system modes and localStorage persistence
-- **Responsive**: Mobile-first TailwindCSS approach with `useMobile` hook
-
-### State Management
-
-- **Server State**: TanStack Query v5 for API data
-- **Global State**: React contexts (currently Theme only)
-- **Authentication**: `useAuth` hook with Bearer token support
-
-## Code Conventions
-
-### File Organization
-
-- **Naming**: dash-case for files/folders, PascalCase for React components
-- **Colocation**: Single-use components near their usage, reusable ones in `/components`
-- **Path Aliases**: `@/*` maps to `src/*`
-
-### API Development
-
-- **Environment**: Requires `VITE_API_URL` and `VITE_APP_NAME` environment variables
-- **API Client**: Always use `useApiInstance` hook for API calls
-- **Error Handling**: ApiInstance handles common HTTP errors, API wrappers handle business logic
-- **Type Safety**: All API responses use auto-generated OpenAPI types
-
-### Testing
-
-- **Framework**: Vitest with explicit imports
-- **Files**: `.spec.ts` suffix, colocated with source files
-- **Mocking**: Prefer `vi.spyOn` over `vi.mock`
-- **CI**: Use `pnpm test:ci` for non-interactive test runs
-
-## Important Files
-
-- `src/api/schema.ts` - Auto-generated OpenAPI types (do not edit manually)
-- `src/hooks/useApiInstance.ts` - HTTP client configuration
-- `src/env.ts` - Environment variable validation with Zod
-- `ai-docs/` - Additional development guidelines and best practices
+**Build Tool Notes:**
+This project uses `rolldown-vite` (a Rust-based Vite alternative) instead of standard Vite for improved build performance. This is configured via the `overrides` field in package.json.
 
 # Coding Style Guide
 
@@ -80,7 +47,7 @@ This is a React 19 + TypeScript application built with Vite, using TailwindCSS v
 - React components use PascalCasing (e.g. `src/components/Button.tsx`)
 - Colocate files in the folder where they're used unless they can be used across the app
 - If a component can be used in many places, place it in the `src/components` folder
-- Shadcn components are in `src/components/ui`, all other components are in `src/components/`
+- When using Shadcn UI, components go in `src/components/ui`, all other components in `src/components/`
 
 ## JavaScript
 
@@ -127,9 +94,12 @@ This is a React 19 + TypeScript application built with Vite, using TailwindCSS v
 
 # Unit testing
 
+**Note:** Vitest is not yet installed in this project. When adding tests, install Vitest and add test scripts to package.json.
+
+When implementing tests:
 - Use Vitest as the unit testing framework.
 - Import testing functions (e.g., `test`, `describe`) explicitly instead of relying on the global Vitest API.
-- Name unit test files with the `.spec.ts` suffix (or `.spec.js` for JavaScript).
+- Name unit test files with the `.spec.ts` suffix (or `.spec.tsx` for components).
 - Keep unit test files in the same directory as their corresponding source files, rather than in a separate `__tests__` directory.
 - Isolate dependencies by using mocking and stubbing where necessary. Prefer `vi.spyOn` over `vi.mock` for more targeted mocking.
-- DON'T run unit test with `pnpm test` or `npm run test`, it will required user input to continue. Use `pnpm run test:ci` instead for a single run.
+- Run tests with `pnpm run test:ci` for single runs (avoid interactive mode).
