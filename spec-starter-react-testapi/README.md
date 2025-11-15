@@ -52,14 +52,13 @@ I want to create a user page, similar to the product page.
 Continue with the plan or ask to generate a spec.md
 
 ```prompt
-> Now, create a spec.md describing the plan. Save it in the specs/ folder.
+Now, create a spec.md describing the plan. Save it in the specs/ folder.
 ```
 
 or
 
 ```prompt
-> Based on your previous plan, please create a detailed specification document
-at docs/specs/spec-{YYYYMMDD}-{feature-name}.md with the following sections:
+Based on your previous plan, please create a detailed specification document at docs/specs/spec-{YYYYMMDD}-{feature-name}.md with the following sections:
 
 1. Feature Overview - high-level description and goals
 2. Technical Requirements - functional and non-functional requirements
@@ -105,15 +104,30 @@ or use custom slash command:
 
 ## Start with SpecKit in existing codebase
 
-1. Install SpecKit in existing codebase
+1. Install SpecKit on your system
+
+```bash
+# Install SpecKit on your system
+uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
+```
+
+2. Install SpecKit in project
 
 ```bash
 # Install SpecKit in existing codebase
-
+cd your-project
+specify init .
 ```
 
-2. Initialize standards/tech-stack.md
+3. Initialize .specify/memory/constitution.md
+
+Tis will gather information about the project and update the `.specify/memory/constitution.md` file.
 
 ```prompt
-> update @speckit/standards/global/tech-stack.md to the current used stack
+/speckit.constitution react client app
 ```
+
+4. Simplify the CLAUDE.md
+
+Most standards are now in the `.specify/memory/constitution.md` file.
+And during the plan & spec generation, the constitution will be used to generate correct implementation.
