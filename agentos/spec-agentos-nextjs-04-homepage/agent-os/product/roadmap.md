@@ -9,14 +9,14 @@
 
 ## Phase 1: MVP - Frontend with Mock Data
 
-1. [ ] Homepage with Agent Gallery - Display a grid of agent file cards with name, description preview, and basic metadata using static mock data `M`
+1. [x] Homepage with Agent Gallery - Display a grid of agent file cards with name, description preview, and basic metadata using static mock data `M`
 2. [ ] Agent File Detail Page - Create individual agent pages showing full description, complete file content in a formatted code block, and metadata `S`
 3. [ ] Copy to Clipboard Functionality - Implement one-click copy button that copies full agent file content to clipboard with user feedback `XS`
 4. [ ] Agent Upload Form - Build a form with fields for file name, description, and content textarea that simulates posting (no persistence) `S`
-5. [ ] Responsive Layout - Ensure all pages work seamlessly on mobile, tablet, and desktop devices using Tailwind CSS responsive utilities `S`
+5. [x] Responsive Layout - Ensure all pages work seamlessly on mobile, tablet, and desktop devices using Tailwind CSS responsive utilities `S`
 6. [ ] Basic Navigation - Implement navigation between homepage, detail pages, and upload form with Next.js App Router `XS`
-7. [ ] Loading States - Add skeleton loaders and loading indicators for simulated async operations to demonstrate future data fetching UX `XS`
-8. [ ] Error States - Design and implement error messages and empty states for scenarios like no agents available or failed operations `XS`
+7. [x] Loading States - Add skeleton loaders and loading indicators for simulated async operations to demonstrate future data fetching UX `XS`
+8. [x] Error States - Design and implement error messages and empty states for scenarios like no agents available or failed operations `XS`
 
 ## Phase 2: Backend Integration
 
