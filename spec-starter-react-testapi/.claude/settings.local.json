@@ -6,7 +6,8 @@
       "Bash(rg:*)",
       "Bash(grep:*)",
       "Bash(pnpm build:*)",
-      "Bash(pnpm lint:*)"
+      "Bash(pnpm lint:*)",
+      "Bash(tree:*)"
     ],
     "deny": []
   },
