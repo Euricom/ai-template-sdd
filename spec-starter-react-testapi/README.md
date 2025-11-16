@@ -32,7 +32,7 @@ pnpm lint
 ## Prime the AI
 
 ```
-Read README.md, CLAUDE.md, ai_docs/*, and run `git ls-files` to understand this codebase.
+Read README.md, CLAUDE.md and run `git ls-files` to understand this codebase.
 ```
 
 ## Demo
@@ -42,7 +42,11 @@ Read README.md, CLAUDE.md, ai_docs/*, and run `git ls-files` to understand this 
 Start by going to plan mode:
 
 ```code
+# for Claude Code
 shift-tab + shift-tab
+
+# for Cursor & Copilot
+# open the Chat tab and select "Plan"
 ```
 
 ```prompt
